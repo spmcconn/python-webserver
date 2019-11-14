@@ -18,7 +18,7 @@ try:
         if(GPIO.input(23) == True):
             if (not prev_input23):  # if port 23 == 1 and it was previously 0
                 print("Port 23 is 1/HIGH/True - BUTTON PRESSED")
-                payload = { "date": datetime.now() }
+                payload = { "date": datetime.now(), "list": "kitties" }
                 r = requests.post("http://192.168.0.104/post", data = payload)
                 print(r.text)
                 # GPIO.output(24, (not GPIO.input(24)))         # Toggle pin 24 - set port/pin value to 1/HIGH/True
@@ -29,7 +29,7 @@ try:
         if(GPIO.input(24) == True):
             if (not prev_input24):  # if port 24 == 1 and it was previously 0
                 print("Port 24 is 1/HIGH/True - BUTTON PRESSED")
-                payload = { "date": datetime.now() }
+                payload = { "date": datetime.now(), "list": "andi" }
                 r = requests.post("http://192.168.0.104/post", data = payload)
                 print(r.text)
                 # GPIO.output(24, (not GPIO.input(24)))         # Toggle pin 24 - set port/pin value to 1/HIGH/True
@@ -40,7 +40,7 @@ try:
         if(GPIO.input(25) == True):
             if (not prev_input25):  # if port 25 == 1 and it was previously 0
                 print("Port 25 is 1/HIGH/True - BUTTON PRESSED")
-                payload = { "date": datetime.now() }
+                payload = { "date": datetime.now(), "list": "addison" }
                 r = requests.post("http://192.168.0.104/post", data = payload)
                 print(r.text)
                 # GPIO.output(24, (not GPIO.input(24)))         # Toggle pin 24 - set port/pin value to 1/HIGH/True
@@ -59,6 +59,9 @@ try:
         #     #GPIO.output(24, (not GPIO.input(24)))         # Toggle pin 24 - set port/pin value to 1/HIGH/True
         # prev_input = curr_input
         # sleep(0.1)         # wait 0.1 seconds
+    
+except requests.exceptions.RequestException as e:
+    print(e)
 
 finally:                   # this block will run no matter how the try block exits
     GPIO.cleanup()         # clean up after yourself
