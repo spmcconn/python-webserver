@@ -7,7 +7,7 @@ $(function () {
 
     ws.onmessage = function (evt) {
         // const message = JSON.parse(evt.data);
-        console.log(JSON.parse(evt.data));
+        console.log(evt.data);
     }
 
     ws.onclose = function () {
