@@ -18,10 +18,10 @@ class MainHandler(tornado.web.RequestHandler):
         print("[HTTP](MainHandler) User Connected.")
         self.render("index.html")
 
+class PostHandler(tornado.web.RequestHandler):
     def post(self):
         # user = self.get_argument("username")
-        print("[HTTP](MainHandler) Post Reuqest: ", self.get_argument("date"))
-
+        print("[HTTP](PostHandler) Post Request: ", self.get_argument("date"))
 
 class WSHandler(tornado.websocket.WebSocketHandler):
     connections = set()
@@ -42,6 +42,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 def make_app():
     return tornado.web.Application([
         (r"/", MainHandler),
+        (r"/post", PostHandler),
         (r"/ws", WSHandler),
         (r'/static/(.*)', tornado.web.StaticFileHandler),
     ], **settings)
