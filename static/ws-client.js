@@ -6,15 +6,15 @@ $(function () {
     }
 
     ws.onmessage = function (evt) {
-        // const message = JSON.parse(evt.data);
-        console.log(evt.data);
+        const response = JSON.parse(evt.data);
+        console.log(response);
+
+        let date = new Date(response.date).toLocaleString();
+
+        $(`#list-${response.list}`).prepend(`<li class="list-group-item">${date}</li>`);
     }
 
     ws.onclose = function () {
         console.log("Connected closed...");
     }
-
-    // $("#press-me-btn").on("click", function() {
-    //     ws.send(JSON.stringify({ message: "Hello World", date: new Date() }));
-    // });
 });
