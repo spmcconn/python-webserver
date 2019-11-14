@@ -14,7 +14,7 @@ $(function () {
         console.log("Connected closed...");
     }
 
-    $("#press-me-btn").on("click", function() {
-        ws.send(JSON.stringify({ message: "Hello World", date: new Date() }));
-    });
+    // $("#press-me-btn").on("click", function() {
+    //     ws.send(JSON.stringify({ message: "Hello World", date: new Date() }));
+    // });
 });
