@@ -22,6 +22,7 @@ class PostHandler(tornado.web.RequestHandler):
     def post(self):
         # user = self.get_argument("username")
         print("[HTTP](PostHandler) Post Request: ", self.get_argument("date"))
+        self.write("OK")
 
 class WSHandler(tornado.websocket.WebSocketHandler):
     connections = set()
