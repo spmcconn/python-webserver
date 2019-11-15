@@ -64,7 +64,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
     def on_message(self, message):
         print('[WS] Incoming message:', message)
 
-        date = datetime.now().strftime("%A, %B %d %Y %H:%M")
+        date = datetime.now().strftime("%A, %B %d %Y %H:%M %p")
 
         f = open("/home/pi/" + message + ".txt", "a")
         f.write(date + "\n")

@@ -19,7 +19,7 @@ try:
             if (not prev_input23):  # if port 23 == 1 and it was previously 0
                 print("Port 23 is 1/HIGH/True - BUTTON PRESSED")
                 # payload = { "date": datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'), "list": "kitties" }
-                payload = { "date": datetime.now().strftime("%A, %B %d %Y %H:%M"), "list": "kitties" }
+                payload = { "date": datetime.now().strftime("%A, %B %d %Y %H:%M %p"), "list": "kitties" }
                 # r = requests.post("http://192.168.0.104/post", data = payload)
                 r = requests.post("http://127.0.0.1/post", data = payload)
                 print(r.text)
@@ -32,7 +32,7 @@ try:
             if (not prev_input24):  # if port 24 == 1 and it was previously 0
                 print("Port 24 is 1/HIGH/True - BUTTON PRESSED")
                 # payload = { "date": datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'), "list": "andi" }
-                payload = { "date": datetime.now().strftime("%A, %B %d %Y %H:%M"), "list": "andi" }
+                payload = { "date": datetime.now().strftime("%A, %B %d %Y %H:%M %p"), "list": "andi" }
                 # r = requests.post("http://192.168.0.104/post", data = payload)
                 r = requests.post("http://127.0.0.1/post", data = payload)
                 print(r.text)
@@ -44,7 +44,7 @@ try:
         if(GPIO.input(25) == True):
             if (not prev_input25):  # if port 25 == 1 and it was previously 0
                 print("Port 25 is 1/HIGH/True - BUTTON PRESSED")
-                payload = { "date": datetime.now().strftime("%A, %B %d %Y %H:%M"), "list": "addison" }
+                payload = { "date": datetime.now().strftime("%A, %B %d %Y %H:%M %p"), "list": "addison" }
                 # r = requests.post("http://192.168.0.104/post", data = payload)
                 r = requests.post("http://127.0.0.1/post", data = payload)
                 print(r.text)
