@@ -24,17 +24,29 @@
         <div class="row">
             <div class="col-4">
                 <h1>Addison</h1>
-                <ul id="list-addison" class="list-group"></ul>
+                <ul id="list-addison" class="list-group">
+                    {% for item in addison_items %}
+                    <li class="list-group-item">{{ escape(item) }}</li>
+                    {% end %}
+                </ul>
             </div>
 
             <div class="col-4">
                 <h1>Andi</h1>
-                <ul id="list-andi" class="list-group"></ul>
+                <ul id="list-andi" class="list-group">
+                    {% for item in andi_items %}
+                    <li class="list-group-item">{{ escape(item) }}</li>
+                    {% end %}
+                </ul>
             </div>
 
             <div class="col-4">
                 <h1>Kitties</h1>
-                <ul id="list-kitties" class="list-group"></ul>
+                <ul id="list-kitties" class="list-group">
+                    {% for item in kitties_items %}
+                    <li class="list-group-item">{{ escape(item) }}</li>
+                    {% end %}
+                </ul>
             </div>
         </div>
     </div>

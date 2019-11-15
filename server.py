@@ -15,17 +15,42 @@ PORT = 80
 
 connections = set()
 
+def getItems(file_path):
+    f = open(file_path, "r")
+    lines = f.readlines()
+
+    length = 5 if len(lines) >= 5 else len(lines)
+    items = lines[-length:] if length > 0 else []
+
+    return items
+
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
         print("[HTTP](MainHandler) User Connected.")
-        self.render("index.html")
+
+        # addison_items = getItems("/home/pi/addison.txt")
+        # andi_items = getItems("/home/pi/andi.txt")
+        # kitties_items = getItems("/home/pi/kitties.txt")
+
+        addison_items = getItems("addison.txt")
+        andi_items = getItems("andi.txt")
+        kitties_items = getItems("kitties.txt")
+
+        self.render("index.html", addison_items = addison_items, andi_items = andi_items, kitties_items = kitties_items)
+
 
 class PostHandler(tornado.web.RequestHandler):
     def post(self):
         # user = self.get_argument("username")
         print("[HTTP](PostHandler) Post Request: ", self.get_argument("date"))
-        [client.write_message({ "date": self.get_argument("date"), "list": self.get_argument("list") }) for client in connections]
+
+        f = open(self.get_argument("list") + ".txt", "a")
+        f.write(self.get_argument("date"))
+        f.close()
+
+        [client.write_message({"date": self.get_argument("date"), "list": self.get_argument("list")}) for client in connections]
         self.write("OK")
+
 
 class WSHandler(tornado.websocket.WebSocketHandler):
     # connections = set()

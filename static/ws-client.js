@@ -34,7 +34,10 @@ $(function () {
         const response = JSON.parse(evt.data);
         console.log(response);
 
-        $(`#list-${response.list}`).prepend(`<li class="list-group-item">${response.date}</li>`);
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour12: true, hour: "numeric", minute: "numeric" };
+        const date = new Date(response.date * 1000).toLocaleString("en-US", options);
+
+        $(`#list-${response.list}`).prepend(`<li class="list-group-item">${date}</li>`);
     }
 
     ws.onclose = function () {

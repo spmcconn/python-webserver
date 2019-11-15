@@ -42,7 +42,7 @@ try:
         if(GPIO.input(25) == True):
             if (not prev_input25):  # if port 25 == 1 and it was previously 0
                 print("Port 25 is 1/HIGH/True - BUTTON PRESSED")
-                payload = { "date": datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'), "list": "addison" }
+                payload = { "date": datetime.timestamp(datetime.now()), "list": "addison" }
                 r = requests.post("http://192.168.0.104/post", data = payload)
                 print(r.text)
                 # GPIO.output(24, (not GPIO.input(24)))         # Toggle pin 24 - set port/pin value to 1/HIGH/True
