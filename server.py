@@ -3,6 +3,7 @@ import tornado.web
 import tornado.websocket
 import os.path
 import json
+from datetime import datetime
 
 # Tornado Folder Paths
 settings = dict(
@@ -28,13 +29,13 @@ class MainHandler(tornado.web.RequestHandler):
     def get(self):
         print("[HTTP](MainHandler) User Connected.")
 
-        # addison_items = getItems("/home/pi/addison.txt")
-        # andi_items = getItems("/home/pi/andi.txt")
-        # kitties_items = getItems("/home/pi/kitties.txt")
+        addison_items = getItems("/home/pi/addison.txt")
+        andi_items = getItems("/home/pi/andi.txt")
+        kitties_items = getItems("/home/pi/kitties.txt")
 
-        addison_items = getItems("addison.txt")
-        andi_items = getItems("andi.txt")
-        kitties_items = getItems("kitties.txt")
+        # addison_items = getItems("addison.txt")
+        # andi_items = getItems("andi.txt")
+        # kitties_items = getItems("kitties.txt")
 
         self.render("index.html", addison_items = addison_items, andi_items = andi_items, kitties_items = kitties_items)
 
@@ -44,7 +45,7 @@ class PostHandler(tornado.web.RequestHandler):
         # user = self.get_argument("username")
         print("[HTTP](PostHandler) Post Request: ", self.get_argument("date"))
 
-        f = open(self.get_argument("list") + ".txt", "a")
+        f = open("/home/pi/" + self.get_argument("list") + ".txt", "a")
         f.write(self.get_argument("date") + "\n")
         f.close()
 
@@ -62,9 +63,16 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
     def on_message(self, message):
         print('[WS] Incoming message:', message)
+
+        date = datetime.now().strftime("%A, %B %d %Y %H:%M")
+
+        f = open("/home/pi/" + message + ".txt", "a")
+        f.write(date + "\n")
+        f.close()
+
         # Broadcast message to all clients
         # [client.write_message(message) for client in self.connections]
-        [client.write_message(message) for client in connections]
+        [client.write_message({"date": date, "list": message}) for client in connections]
 
     def on_close(self):
         print('[WS] Connection was closed.')

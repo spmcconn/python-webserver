@@ -15,41 +15,45 @@
 
 <body>
     <div class="jumbotron">
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-            featured content or information.</p>
+        <h1 class="display-4">Hi Shamy!</h1>
+        <p class="lead">This is a way to keep our unorganized asses in check on feeding times.</p>
+        <p class="lead">Just click the button
+            below the list name to add a new date, or push the corresponding button on the counter.</p>
     </div>
 
-    <div class="container">
+    <!-- <div class="container"> -->
         <div class="row">
             <div class="col-4">
                 <h1>Addison</h1>
+                <button id="addison-btn" class="btn btn-outline-primary btn-block">Add Time</button>
                 <ul id="list-addison" class="list-group">
-                    {% for item in addison_items %}
-                    <li class="list-group-item">{{ escape(item) }}</li>
+                    {% for i in range(len(addison_items))  %}
+                    <li class="list-group-item">{{ escape(addison_items[len(addison_items) - i - 1]) }}</li>
                     {% end %}
                 </ul>
             </div>
 
             <div class="col-4">
                 <h1>Andi</h1>
+                <button id="andi-btn" class="btn btn-outline-primary btn-block">Add Time</button>
                 <ul id="list-andi" class="list-group">
-                    {% for item in andi_items %}
-                    <li class="list-group-item">{{ escape(item) }}</li>
+                    {% for i in range(len(andi_items))  %}
+                    <li class="list-group-item">{{ escape(andi_items[len(andi_items) - i - 1]) }}</li>
                     {% end %}
                 </ul>
             </div>
 
             <div class="col-4">
                 <h1>Kitties</h1>
+                <button id="kitties-btn" class="btn btn-outline-primary btn-block">Add Time</button>
                 <ul id="list-kitties" class="list-group">
-                    {% for item in kitties_items %}
-                    <li class="list-group-item">{{ escape(item) }}</li>
+                    {% for i in range(len(kitties_items))  %}
+                    <li class="list-group-item">{{ escape(kitties_items[len(kitties_items) - i - 1]) }}</li>
                     {% end %}
                 </ul>
             </div>
         </div>
-    </div>
+    <!-- </div> -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

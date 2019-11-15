@@ -20,7 +20,8 @@ try:
                 print("Port 23 is 1/HIGH/True - BUTTON PRESSED")
                 # payload = { "date": datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'), "list": "kitties" }
                 payload = { "date": datetime.now().strftime("%A, %B %d %Y %H:%M"), "list": "kitties" }
-                r = requests.post("http://192.168.0.104/post", data = payload)
+                # r = requests.post("http://192.168.0.104/post", data = payload)
+                r = requests.post("http://127.0.0.1/post", data = payload)
                 print(r.text)
                 # GPIO.output(24, (not GPIO.input(24)))         # Toggle pin 24 - set port/pin value to 1/HIGH/True
             prev_input23 = True
@@ -32,7 +33,8 @@ try:
                 print("Port 24 is 1/HIGH/True - BUTTON PRESSED")
                 # payload = { "date": datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'), "list": "andi" }
                 payload = { "date": datetime.now().strftime("%A, %B %d %Y %H:%M"), "list": "andi" }
-                r = requests.post("http://192.168.0.104/post", data = payload)
+                # r = requests.post("http://192.168.0.104/post", data = payload)
+                r = requests.post("http://127.0.0.1/post", data = payload)
                 print(r.text)
                 # GPIO.output(24, (not GPIO.input(24)))         # Toggle pin 24 - set port/pin value to 1/HIGH/True
             prev_input24 = True
@@ -43,7 +45,8 @@ try:
             if (not prev_input25):  # if port 25 == 1 and it was previously 0
                 print("Port 25 is 1/HIGH/True - BUTTON PRESSED")
                 payload = { "date": datetime.now().strftime("%A, %B %d %Y %H:%M"), "list": "addison" }
-                r = requests.post("http://192.168.0.104/post", data = payload)
+                # r = requests.post("http://192.168.0.104/post", data = payload)
+                r = requests.post("http://127.0.0.1/post", data = payload)
                 print(r.text)
                 # GPIO.output(24, (not GPIO.input(24)))         # Toggle pin 24 - set port/pin value to 1/HIGH/True
             prev_input25 = True

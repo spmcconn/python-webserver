@@ -10,9 +10,23 @@ $(function () {
         console.log(response);
 
         $(`#list-${response.list}`).prepend(`<li class="list-group-item">${response.date}</li>`);
+
+        if($(`#list-${response.list} .list-group-item`).length > 5) $(`#list-${response.list} .list-group-item:last-child`).remove();
     }
 
     ws.onclose = function () {
         console.log("Connected closed...");
     }
+
+    $("#addison-btn").on("click", function() {
+        ws.send("addison");
+    });
+
+    $("#andi-btn").on("click", function() {
+        ws.send("andi");
+    });
+
+    $("#kitties-btn").on("click", function() {
+        ws.send("kitties");
+    });
 });
