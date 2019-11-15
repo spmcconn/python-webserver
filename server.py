@@ -45,7 +45,7 @@ class PostHandler(tornado.web.RequestHandler):
         print("[HTTP](PostHandler) Post Request: ", self.get_argument("date"))
 
         f = open(self.get_argument("list") + ".txt", "a")
-        f.write(self.get_argument("date"))
+        f.write(self.get_argument("date") + "\n")
         f.close()
 
         [client.write_message({"date": self.get_argument("date"), "list": self.get_argument("list")}) for client in connections]
