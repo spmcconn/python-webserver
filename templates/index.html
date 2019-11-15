@@ -11,20 +11,31 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+
+    <style>
+        img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="jumbotron">
+        <div class="container">
         <h1 class="display-4">Hi Shamy!</h1>
-        <p class="lead">This is a way to keep our unorganized asses in check on feeding times.</p>
+        <p class="lead">This is a way to keep our unorganized butts in check on feeding times.</p>
         <p class="lead">Just click the button
             below the list name to add a new date, or push the corresponding button on the counter.</p>
+        </div>
     </div>
 
-    <div class="container">
+    <div class="container text-center">
         <div class="row">
             <div class="col-md-4 col-sm-12">
-                <h1>Addison</h1>
+                <img src="../static/img/addison.jpeg" class="rounded-circle">
+                <h2>Addison</h2>
                 <button id="addison-btn" class="btn btn-outline-primary btn-block">Add Time</button>
                 <ul id="list-addison" class="list-group">
                     {% for i in range(len(addison_items))  %}
@@ -34,7 +45,8 @@
             </div>
 
             <div class="col-md-4 col-sm-12">
-                <h1>Andi</h1>
+                <img src="../static/img/andi.jpeg" class="rounded-circle">
+                <h2>Andi</h2>
                 <button id="andi-btn" class="btn btn-outline-primary btn-block">Add Time</button>
                 <ul id="list-andi" class="list-group">
                     {% for i in range(len(andi_items))  %}
@@ -44,7 +56,8 @@
             </div>
 
             <div class="col-md-4 col-sm-12">
-                <h1>Kitties</h1>
+                <img src="../static/img/kitties.jpg" class="rounded-circle">
+                <h2>Kitties</h2>
                 <button id="kitties-btn" class="btn btn-outline-primary btn-block">Add Time</button>
                 <ul id="list-kitties" class="list-group">
                     {% for i in range(len(kitties_items))  %}
@@ -66,7 +79,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <script src="../static/ws-client.js"></script>
+    <script src="../static/js/ws-client.js"></script>
 </body>
 
 </html>
