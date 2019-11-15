@@ -1,4 +1,29 @@
 $(function () {
+    const days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+    ];
+
+    const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+    ]
+
     const ws = new WebSocket(`ws://${location.host}/ws`);
 
     ws.onopen = function () {
@@ -9,9 +34,7 @@ $(function () {
         const response = JSON.parse(evt.data);
         console.log(response);
 
-        let date = new Date(response.date).toLocaleString();
-
-        $(`#list-${response.list}`).prepend(`<li class="list-group-item">${date}</li>`);
+        $(`#list-${response.list}`).prepend(`<li class="list-group-item">${response.date}</li>`);
     }
 
     ws.onclose = function () {

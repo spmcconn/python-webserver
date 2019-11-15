@@ -18,7 +18,8 @@ try:
         if(GPIO.input(23) == True):
             if (not prev_input23):  # if port 23 == 1 and it was previously 0
                 print("Port 23 is 1/HIGH/True - BUTTON PRESSED")
-                payload = { "date": datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'), "list": "kitties" }
+                # payload = { "date": datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'), "list": "kitties" }
+                payload = { "date": datetime.timestamp(datetime.now()), "list": "kitties" }
                 r = requests.post("http://192.168.0.104/post", data = payload)
                 print(r.text)
                 # GPIO.output(24, (not GPIO.input(24)))         # Toggle pin 24 - set port/pin value to 1/HIGH/True
@@ -29,7 +30,8 @@ try:
         if(GPIO.input(24) == True):
             if (not prev_input24):  # if port 24 == 1 and it was previously 0
                 print("Port 24 is 1/HIGH/True - BUTTON PRESSED")
-                payload = { "date": datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'), "list": "andi" }
+                # payload = { "date": datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'), "list": "andi" }
+                payload = { "date": datetime.timestamp(datetime.now()), "list": "andi" }
                 r = requests.post("http://192.168.0.104/post", data = payload)
                 print(r.text)
                 # GPIO.output(24, (not GPIO.input(24)))         # Toggle pin 24 - set port/pin value to 1/HIGH/True
