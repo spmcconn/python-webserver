@@ -1,3 +1,4 @@
+import helpers
 import tornado.ioloop
 import tornado.web
 import tornado.websocket
@@ -29,13 +30,13 @@ class MainHandler(tornado.web.RequestHandler):
     def get(self):
         print("[HTTP](MainHandler) User Connected.")
 
-        addison_items = getItems("/home/pi/addison.txt")
-        andi_items = getItems("/home/pi/andi.txt")
-        kitties_items = getItems("/home/pi/kitties.txt")
+        # addison_items = getItems("/home/pi/addison.txt")
+        # andi_items = getItems("/home/pi/andi.txt")
+        # kitties_items = getItems("/home/pi/kitties.txt")
 
-        # addison_items = getItems("addison.txt")
-        # andi_items = getItems("andi.txt")
-        # kitties_items = getItems("kitties.txt")
+        addison_items = getItems("addison.txt")
+        andi_items = getItems("andi.txt")
+        kitties_items = getItems("kitties.txt")
 
         self.render("index.html", addison_items = addison_items, andi_items = andi_items, kitties_items = kitties_items)
 
@@ -64,8 +65,8 @@ class WSHandler(tornado.websocket.WebSocketHandler):
     def on_message(self, message):
         print('[WS] Incoming message:', message)
 
-        date = datetime.now().strftime("%A, %B %d %Y %H:%M %p")
-
+        date = helpers.get_time_now()
+        
         f = open("/home/pi/" + message + ".txt", "a")
         f.write(date + "\n")
         f.close()
