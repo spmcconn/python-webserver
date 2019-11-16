@@ -4,7 +4,6 @@ import tornado.web
 import tornado.websocket
 import os.path
 import json
-from datetime import datetime
 
 # Tornado Folder Paths
 settings = dict(
@@ -30,13 +29,13 @@ class MainHandler(tornado.web.RequestHandler):
     def get(self):
         print("[HTTP](MainHandler) User Connected.")
 
-        # addison_items = getItems("/home/pi/addison.txt")
-        # andi_items = getItems("/home/pi/andi.txt")
-        # kitties_items = getItems("/home/pi/kitties.txt")
+        addison_items = getItems("/home/pi/addison.txt")
+        andi_items = getItems("/home/pi/andi.txt")
+        kitties_items = getItems("/home/pi/kitties.txt")
 
-        addison_items = getItems("addison.txt")
-        andi_items = getItems("andi.txt")
-        kitties_items = getItems("kitties.txt")
+        # addison_items = getItems("addison.txt")
+        # andi_items = getItems("andi.txt")
+        # kitties_items = getItems("kitties.txt")
 
         self.render("index.html", addison_items = addison_items, andi_items = andi_items, kitties_items = kitties_items)
 
@@ -66,7 +65,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         print('[WS] Incoming message:', message)
 
         date = helpers.get_time_now()
-        
+
         f = open("/home/pi/" + message + ".txt", "a")
         f.write(date + "\n")
         f.close()

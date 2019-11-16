@@ -1,7 +1,6 @@
 import helpers
 import RPi.GPIO as GPIO
 import requests
-from datetime import datetime
 from time import sleep     # this lets us have a time delay (see line 15)
 GPIO.setmode(GPIO.BCM)     # set up BCM GPIO numbering
 # set GPIO25 as input (button)
