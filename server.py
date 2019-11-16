@@ -12,7 +12,7 @@ settings = dict(
 )
 
 # Tonado server port
-PORT = 80
+PORT = 8000
 
 connections = set()
 
