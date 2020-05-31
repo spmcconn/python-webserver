@@ -1,5 +1,5 @@
 $(function () {
-    const ws = new WebSocket(`ws://${location.host}:81/ws`);
+    const ws = new WebSocket(`ws://${location.host}/ws`);
 
     ws.onopen = function () {
         console.log("Connected");
